@@ -3,6 +3,7 @@ import imagelab.*;
 import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
+import sound.*;
 
 /**
  * Graphics frame used to display an image.
@@ -16,7 +17,7 @@ public class DisplayImage extends ILFrame {
     /** The image of this frame. */
     Image img;
     /** The display panel of this frame. */
-    private DisPanel pane;
+    private DynaPanel pane;
 
     /** Initial x-coordinate for window placement */
     private static final int XINIT = 10;
@@ -35,6 +36,11 @@ public class DisplayImage extends ILFrame {
     private static int xspot = XMAX;
     /** y-coordinate for next window */
     private static int yspot = YMAX;
+    
+    /**Image Producer to set img*/
+    private MemoryImageSource source;
+    /**Used to get STD_DURATION*/
+    private Music music;
 
     /**
      * This constructor takes the image object to display
@@ -68,7 +74,7 @@ public class DisplayImage extends ILFrame {
         int pixwidth  = imp.pixwidth;
         img = getToolkit().createImage(
                 new MemoryImageSource(pixwidth, pixheight, showpix, 0, pixwidth));
-        pane        = new DisPanel(img);
+        pane        = new DynaPanel(img);
         getContentPane().add(pane,"Center");
         int width;
         int height;
@@ -93,6 +99,18 @@ public class DisplayImage extends ILFrame {
         myMenuBar.add(ImageLab.newFilterMenu());
         setJMenuBar(myMenuBar);
         setVisible(true);
+    }
+    
+    public void remove(){
+        getContentPane().remove(pane);
+    }   
+    
+     public void synchronize(int w, int h, int[] pixs){
+        source = new MemoryImageSource(w, h, pixs, 0, w);
+        img = getToolkit().createImage(source);
+        pane.newImage(img);
+        repaint();
+
     }
 
 }//class
