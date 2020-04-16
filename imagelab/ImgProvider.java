@@ -26,6 +26,7 @@ public class ImgProvider extends JComponent {
     int             pixheight;
     /** Image width in pixels. */
     int             pixwidth;
+    static Thread playThread;
     /** The raw image. */
     Image           img;
     /** Holders for the color and alpha components of the image. */
@@ -45,6 +46,8 @@ public class ImgProvider extends JComponent {
     /** Identification used to distinguish one ImgProvider from another. */
     protected int id;
     protected ImageLab lab;
+    
+    DisplayImage dis; 
 
     /** No-argument constructor.  Sets name to empty string. */
     public ImgProvider() {
@@ -196,7 +199,7 @@ public class ImgProvider extends JComponent {
         img = getToolkit().createImage(
                 new MemoryImageSource(pixwidth, pixheight, pix, 0, pixwidth));
         //System.out.println("ImgProvider:showPix:  before displayImage");
-        DisplayImage dis = new DisplayImage(this,name,true);
+        dis = new DisplayImage(this,name,true);
         //System.out.println("ImgProvider:showPix:  after displayImage");
         try { Thread.sleep(100);}catch(Exception e){}       //make sure image has time to display
     }//showPix
@@ -397,18 +400,20 @@ public class ImgProvider extends JComponent {
      * values of each row are used as the velocities
      * of the Red, Green and Blue notes respectively.
      */
-    public void play() {
+      public void play() {
+        if(playThread!=null) playThread.stop();
+        playThread = new Thread(() -> {
         short[][] red = getRed();     // Red plane
         short[][] green = getGreen(); // Green plane
         short[][] blue = getBlue();   // Blue plane
-        short[][] bw = getBWImage();  // Black & white image
+        short[][] bw = getRed();  // Black & white image
         short[][] alpha = getAlpha(); // Alpha channel
         short[][] hue;
         short[][] saturation;
         short[][] brightness;
    
-        int height = bw.length;
-        int width  = bw[0].length;
+        int height = red.length;
+        int width  = red[0].length;
     
         //System.out.println("Playing image number " + getid());
         
@@ -465,7 +470,9 @@ public class ImgProvider extends JComponent {
         }//for row
         int[] instruments = {Note.Vibes, Note.Pizzacatto, Note.MelodicTom};
         Music m = new Music(3, instruments);
-        m.playTune(tune);
+        m.playTune(tune, this);
+        });
+        playThread.start();
     }
     
     /**
@@ -489,6 +496,26 @@ public class ImgProvider extends JComponent {
         } catch(Exception e){ }
         dImage1.changeImage(this,"Second Pass");
         System.out.println("ImgProvider:showSlow: Second Pass");
+    }
+    
+        public void removeContainer(){
+        dis.remove();
+    }
+    
+    public int[] getPix(){
+        return pix;
+    }
+    
+    public int getPixWidth(){
+        return pixwidth;
+    }
+    
+    public int getPixHeight(){
+        return pixheight;
+    }
+    
+    public DisplayImage getDis(){
+        return dis;
     }
 
 }
