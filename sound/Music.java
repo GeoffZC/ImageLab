@@ -4,7 +4,7 @@ import javax.sound.midi.Instrument;
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import java.util.Iterator;
-
+import imagelab.*;
 /**
  * Render sound using the javax.sound.midi package.
  * @author Dr. Jody Paul
@@ -192,7 +192,15 @@ public class Music {
      * Play a tune.
      * @param tune the tune to play
      */
-    public void playTune(Tune tune) {
+    public void playTune(Tune tune, ImgProvider imp) {
+        int heightTracker = 0;
+        ImgProvider improvider = imp;
+        int[] pixels = improvider.getPix();
+        int height = improvider.getPixHeight();
+        int width = improvider.getPixWidth();
+        int oldRow = 0;
+        int newRow = width;
+        int [] row = new int[width*height];
         /** Current chord */
         Chord chord;
         /** Current duration */
@@ -201,6 +209,13 @@ public class Music {
         Iterator<Chord> tuneIt = tune.iterator();
         int line = 0;
         while (tuneIt.hasNext()) {
+            for(int i = 0; i<newRow; i++){
+                row[i] = pixels[i];
+            }
+            
+            //oldRow = newRow-1;
+            improvider.getDis().synchronize(width, height, row);
+            newRow += width;
             System.out.println("[Line " + (line++) + "] ");
             chord = tuneIt.next();
             playChord(chord,duration);
