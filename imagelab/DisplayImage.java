@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
 
+
 /**
  * Graphics frame used to display an image.
  * @author Dr. Aaron Gordon
@@ -16,7 +17,7 @@ public class DisplayImage extends ILFrame {
     /** The image of this frame. */
     Image img;
     /** The display panel of this frame. */
-    private DisPanel pane;
+    private DynaPanel pane;
 
     /** Initial x-coordinate for window placement */
     private static final int XINIT = 10;
@@ -30,7 +31,7 @@ public class DisplayImage extends ILFrame {
     private static final int XMAX = 800;
     /** Maximum y-coordinate before wrapping */
     private static final int YMAX = 600;
-    
+
     /** x-coordinate for next window */
     private static int xspot = XMAX;
     /** y-coordinate for next window */
@@ -45,7 +46,7 @@ public class DisplayImage extends ILFrame {
     public DisplayImage(ImgProvider imp, String title) {
         this(imp, title, false);
     }//constructor
-    
+
     /**
      * This constructor takes the image object to display,
      * a string to use as the title of the window, and a
@@ -68,7 +69,7 @@ public class DisplayImage extends ILFrame {
         int pixwidth  = imp.pixwidth;
         img = getToolkit().createImage(
                 new MemoryImageSource(pixwidth, pixheight, showpix, 0, pixwidth));
-        pane        = new DisPanel(img);
+        pane        = new DynaPanel(img);
         getContentPane().add(pane,"Center");
         int width;
         int height;
@@ -93,6 +94,14 @@ public class DisplayImage extends ILFrame {
         myMenuBar.add(ImageLab.newFilterMenu());
         setJMenuBar(myMenuBar);
         setVisible(true);
+    }
+
+     public void synchronize(int w, int h, int[] pixs){
+        img = getToolkit().createImage(
+		 new MemoryImageSource(w, h, pixs, 0, w));
+        pane.newImage(img);
+        repaint();
+
     }
 
 }//class
