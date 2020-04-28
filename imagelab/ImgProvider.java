@@ -48,7 +48,7 @@ public class ImgProvider extends JComponent {
     protected int id;
     protected ImageLab lab;
     /**Used to pass instance between classes*/
-    DisplayImage dis;
+    private  DisplayImage dis;
 
     /** No-argument constructor.  Sets name to empty string. */
     public ImgProvider() {
@@ -200,7 +200,7 @@ public class ImgProvider extends JComponent {
         img = getToolkit().createImage(
                 new MemoryImageSource(pixwidth, pixheight, pix, 0, pixwidth));
         //System.out.println("ImgProvider:showPix:  before displayImage");
-        DisplayImage dis = new DisplayImage(this,name,true);
+        dis = new DisplayImage(this,name,true);
         //System.out.println("ImgProvider:showPix:  after displayImage");
         try { Thread.sleep(100);}catch(Exception e){}       //make sure image has time to display
     }//showPix
@@ -407,7 +407,7 @@ public class ImgProvider extends JComponent {
         short[][] red = getRed();     // Red plane
         short[][] green = getGreen(); // Green plane
         short[][] blue = getBlue();   // Blue plane
-        short[][] bw = getRed();  // Black & white image
+        short[][] bw = getBWImage();  // Black & white image
         short[][] alpha = getAlpha(); // Alpha channel
         short[][] hue;
         short[][] saturation;
@@ -498,19 +498,27 @@ public class ImgProvider extends JComponent {
         dImage1.changeImage(this,"Second Pass");
         System.out.println("ImgProvider:showSlow: Second Pass");
     }
-    
+    /**
+     *@return pix pixel array.
+     */
     public int[] getPix(){
         return pix;
     }
-    
+    /**
+     *@return the image  width in pixels.
+     */
     public int getPixWidth(){
         return pixwidth;
     }
-    
+    /**
+     *@return the image height in pixels.
+     */
     public int getPixHeight(){
         return pixheight;
     }
-    
+    /**
+     *@return the DisplayImage object used for this instance.
+     */
     public DisplayImage getDis(){
         return dis;
     }
