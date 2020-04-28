@@ -530,4 +530,33 @@ public class ImgProvider extends JComponent {
         return dis;
     }
 
+    public void removeContainer(){
+       	dis.remove();
+    }
+
+    /**
+     *@return pix pixel array.
+     */
+    public int[] getPix(){
+        return pix;
+    }
+    /**
+     *@return the image  width in pixels.
+     */
+    public int getPixWidth(){
+        return pixwidth;
+    }
+    /**
+     *@return the image height in pixels.
+     */
+    public int getPixHeight(){
+        return pixheight;
+    }
+    /**
+     *@return the DisplayImage object used for this instance.
+     */
+    public DisplayImage getDis(){
+        return dis;
+    }
+
 }

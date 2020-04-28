@@ -95,6 +95,35 @@ public class DisplayImage extends ILFrame {
         setJMenuBar(myMenuBar);
         setVisible(true);
     }
+    
+    public void remove(){
+        getContentPane().remove(pane);
+    }   
+
+     public void synchronize(int w, int h, int[] pixs){
+        img = getToolkit().createImage(
+		 new MemoryImageSource(w, h, pixs, 0, w));
+        pane.newImage(img);
+        repaint();
+
+    }
+
+    public void remove(){
+	getContentPane().remove(pane);
+    }
+
+     /**Method to display image a line at a time while music is playing.
+      *@param w the width of image in pixels.
+      *@param h the height of image in pixels. 
+      *@param pixs the array of pixel values.
+      */
+     public void synchronize(int w, int h, int[] pixs){
+        img = getToolkit().createImage(
+		 new MemoryImageSource(w, h, pixs, 0, w));
+        pane.newImage(img);
+        repaint();
+
+    }
 
     /**This method is used to remvove current pane
      *before synchronization occurs.
