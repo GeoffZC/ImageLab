@@ -407,7 +407,7 @@ public class ImgProvider extends JComponent {
         short[][] red = getRed();     // Red plane
         short[][] green = getGreen(); // Green plane
         short[][] blue = getBlue();   // Blue plane
-        short[][] bw = getBWImage();  // Black & white image
+        short[][] bw = getRed();  // Black & white image
         short[][] alpha = getAlpha(); // Alpha channel
         short[][] hue;
         short[][] saturation;
