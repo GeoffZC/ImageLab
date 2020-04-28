@@ -6,6 +6,7 @@ import javax.swing.*;
 import sound.*;
 
 
+
 /**
  * Graphics frame used to display an image.
  * @author Dr. Aaron Gordon
@@ -109,6 +110,14 @@ public class DisplayImage extends ILFrame {
      public void synchronize(int w, int h, int[] pixs){
         source = new MemoryImageSource(w, h, pixs, 0, w);
         img = getToolkit().createImage(source);
+        pane.newImage(img);
+        repaint();
+
+    }
+
+     public void synchronize(int w, int h, int[] pixs){
+        img = getToolkit().createImage(
+		 new MemoryImageSource(w, h, pixs, 0, w));
         pane.newImage(img);
         repaint();
 
