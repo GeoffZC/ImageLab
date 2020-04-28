@@ -218,7 +218,6 @@ public class Music {
             for (int i = 0; i < newRow; i++) {
                 row[i] = pixels[i];
             }
-            //oldRow = newRow-1;
             improvider.getDis().synchronize(width, height, row);
             newRow += width;
             System.out.println("[Line " + (line++) + "] ");
