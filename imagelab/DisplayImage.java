@@ -99,7 +99,7 @@ public class DisplayImage extends ILFrame {
     public void remove(){
 	getContentPane().remove(pane);
     }
-     
+
      /**Method to display image a line at a time while music is playing.
       *@param w the width of image in pixels.
       *@param h the height of image in pixels. 
