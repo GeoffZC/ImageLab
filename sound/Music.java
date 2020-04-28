@@ -199,13 +199,14 @@ public class Music {
      * @param imp the ImgProvider object.
      */
     public void playTune(final Tune tune, final ImgProvider imp) {
-        int heightTracker = 0;
         ImgProvider improvider = imp;
         int[] pixels = improvider.getPix();
         int height = improvider.getPixHeight();
         int width = improvider.getPixWidth();
-        int oldRow = 0;
         int newRow = width;
+	/**Holds increasing amounts of pixels
+	 *that are used to display more of the
+	 *image for each chord played.*/
         int[] row = new int[width * height];
         /** Current chord */
         Chord chord;
