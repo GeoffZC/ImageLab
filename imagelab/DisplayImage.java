@@ -3,7 +3,6 @@ import imagelab.*;
 import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
-import sound.*;
 
 
 
@@ -20,7 +19,6 @@ public class DisplayImage extends ILFrame {
     Image img;
     /** The display panel of this frame. */
     private DynaPanel pane;
-
     /** Initial x-coordinate for window placement */
     private static final int XINIT = 10;
     /** Initial y-coordinate for window placement */
@@ -38,11 +36,6 @@ public class DisplayImage extends ILFrame {
     private static int xspot = XMAX;
     /** y-coordinate for next window */
     private static int yspot = YMAX;
-    
-    /**Image Producer to set img*/
-    private MemoryImageSource source;
-    /**Used to get STD_DURATION*/
-    private Music music;
 
     /**
      * This constructor takes the image object to display
@@ -106,22 +99,6 @@ public class DisplayImage extends ILFrame {
     public void remove(){
         getContentPane().remove(pane);
     }   
-    
-     public void synchronize(int w, int h, int[] pixs){
-        source = new MemoryImageSource(w, h, pixs, 0, w);
-        img = getToolkit().createImage(source);
-        pane.newImage(img);
-        repaint();
-
-    }
-
-     public void synchronize(int w, int h, int[] pixs){
-        img = getToolkit().createImage(
-		 new MemoryImageSource(w, h, pixs, 0, w));
-        pane.newImage(img);
-        repaint();
-
-    }
 
      public void synchronize(int w, int h, int[] pixs){
         img = getToolkit().createImage(
