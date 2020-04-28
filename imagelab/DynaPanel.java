@@ -78,7 +78,7 @@ public class DynaPanel extends JPanel implements ILPanel {
      * @param image the image object to be drawn on the canvas
      */
     public void newImage(Image image) {
-        System.out.println("Using DynaPanel");
+        //System.out.println("Using DynaPanel");
         //System.out.println("DynaPanel:draw(i): image = " + image);
         panelImage = image;
     }
