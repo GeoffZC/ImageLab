@@ -26,6 +26,7 @@ public class ImgProvider extends JComponent {
     int             pixheight;
     /** Image width in pixels. */
     int             pixwidth;
+    /**Thread allows play() to run independently of display*/
     static Thread playThread;
     /** The raw image. */
     Image           img;
@@ -46,9 +47,8 @@ public class ImgProvider extends JComponent {
     /** Identification used to distinguish one ImgProvider from another. */
     protected int id;
     protected ImageLab lab;
-    
-    DisplayImage dis; 
-
+    /**Used to pass instance between classes*/
+    private  DisplayImage dis;
     /** No-argument constructor.  Sets name to empty string. */
     public ImgProvider() {
         this("");
@@ -497,23 +497,27 @@ public class ImgProvider extends JComponent {
         dImage1.changeImage(this,"Second Pass");
         System.out.println("ImgProvider:showSlow: Second Pass");
     }
-    
-        public void removeContainer(){
-        dis.remove();
-    }
-    
+    /**
+     *@return pix pixel array.
+     */
     public int[] getPix(){
         return pix;
     }
-    
+    /**
+     *@return the image  width in pixels.
+     */
     public int getPixWidth(){
         return pixwidth;
     }
-    
+    /**
+     *@return the image height in pixels.
+     */
     public int getPixHeight(){
         return pixheight;
     }
-    
+    /**
+     *@return the DisplayImage object used for this instance.
+     */
     public DisplayImage getDis(){
         return dis;
     }
