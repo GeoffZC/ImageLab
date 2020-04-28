@@ -49,7 +49,6 @@ public class ImgProvider extends JComponent {
     protected ImageLab lab;
     /**Used to pass instance between classes*/
     private  DisplayImage dis;
-
     /** No-argument constructor.  Sets name to empty string. */
     public ImgProvider() {
         this("");
@@ -407,7 +406,7 @@ public class ImgProvider extends JComponent {
         short[][] red = getRed();     // Red plane
         short[][] green = getGreen(); // Green plane
         short[][] blue = getBlue();   // Blue plane
-        short[][] bw = getRed();  // Black & white image
+        short[][] bw = getBWImage();  // Black & white image
         short[][] alpha = getAlpha(); // Alpha channel
         short[][] hue;
         short[][] saturation;
@@ -498,6 +497,7 @@ public class ImgProvider extends JComponent {
         dImage1.changeImage(this,"Second Pass");
         System.out.println("ImgProvider:showSlow: Second Pass");
     }
+
     /**
      *@return pix pixel array.
      */

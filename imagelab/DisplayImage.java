@@ -3,7 +3,7 @@ import imagelab.*;
 import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
-import sound.*;
+
 
 
 /**
@@ -19,7 +19,6 @@ public class DisplayImage extends ILFrame {
     Image img;
     /** The display panel of this frame. */
     private DynaPanel pane;
-
     /** Initial x-coordinate for window placement */
     private static final int XINIT = 10;
     /** Initial y-coordinate for window placement */
@@ -37,11 +36,6 @@ public class DisplayImage extends ILFrame {
     private static int xspot = XMAX;
     /** y-coordinate for next window */
     private static int yspot = YMAX;
-    
-    /**Image Producer to set img*/
-    private MemoryImageSource source;
-    /**Used to get STD_DURATION*/
-    private Music music;
 
     /**
      * This constructor takes the image object to display
@@ -101,11 +95,16 @@ public class DisplayImage extends ILFrame {
         setJMenuBar(myMenuBar);
         setVisible(true);
     }
-    
-    public void remove(){
-        getContentPane().remove(pane);
-    }
 
+    public void remove(){
+	getContentPane().remove(pane);
+    }
+     
+     /**Method to display image a line at a time while music is playing.
+      *@param w the width of image in pixels.
+      *@param h the height of image in pixels. 
+      *@param pixs the array of pixel values.
+      */
      public void synchronize(int w, int h, int[] pixs){
         img = getToolkit().createImage(
 		 new MemoryImageSource(w, h, pixs, 0, w));

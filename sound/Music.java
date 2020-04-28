@@ -217,7 +217,7 @@ public class Music {
         while (tuneIt.hasNext()) {
             for (int i = 0; i < newRow; i++) {
                 row[i] = pixels[i];
-	    }
+            }
             improvider.getDis().synchronize(width, height, row);
             newRow += width;
             System.out.println("[Line " + (line++) + "] ");
