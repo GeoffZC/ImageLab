@@ -500,7 +500,7 @@ public class ImgProvider extends JComponent {
     
 
     public void removeContainer(){
-       	dis.remove()
+       	dis.remove();
     }
 
     /**
