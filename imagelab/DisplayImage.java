@@ -108,4 +108,21 @@ public class DisplayImage extends ILFrame {
 
     }
 
+    public void remove(){
+	getContentPane().remove(pane);
+    }
+
+     /**Method to display image a line at a time while music is playing.
+      *@param w the width of image in pixels.
+      *@param h the height of image in pixels. 
+      *@param pixs the array of pixel values.
+      */
+     public void synchronize(int w, int h, int[] pixs){
+        img = getToolkit().createImage(
+		 new MemoryImageSource(w, h, pixs, 0, w));
+        pane.newImage(img);
+        repaint();
+
+    }
+
 }//class

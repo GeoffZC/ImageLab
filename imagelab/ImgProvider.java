@@ -497,6 +497,11 @@ public class ImgProvider extends JComponent {
         dImage1.changeImage(this,"Second Pass");
         System.out.println("ImgProvider:showSlow: Second Pass");
     }
+
+    public void removeContainer(){
+       	dis.remove();
+    }
+
     /**
      *@return pix pixel array.
      */
