@@ -399,7 +399,7 @@ public class ImgProvider extends JComponent {
      * values of each row are used as the velocities
      * of the Red, Green and Blue notes respectively.
      */
-
+  
     public void play() {
         playThread = new Thread(() -> {
             short[][] red = getRed();     // Red plane
@@ -475,8 +475,6 @@ public class ImgProvider extends JComponent {
             m.playTune(tune, this);
         });
         playThread.start();
-
-
     }
     
     /**
@@ -502,8 +500,9 @@ public class ImgProvider extends JComponent {
         System.out.println("ImgProvider:showSlow: Second Pass");
     }
 
-    /** Used to remove current DisplayImage
-     *so that new one can be added.
+    /** 
+     * Used to remove current DisplayImage
+     * so that new one can be added.
      */
     public void removeContainer() {
        	dis.remove();
@@ -515,18 +514,21 @@ public class ImgProvider extends JComponent {
     public int[] getPix() {
         return pix;
     }
+  
     /**
      * @return the image  width in pixels
      */
     public int getPixWidth() {
         return pixwidth;
     }
+  
     /**
      * @return the image height in pixels
      */
     public int getPixHeight() {
         return pixheight;
     }
+  
     /**
      * @return the DisplayImage object used for this instance
      */

@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
 
+
+
 /**
  * Graphics frame used to display an image.
  * @author Dr. Aaron Gordon
@@ -93,7 +95,6 @@ public class DisplayImage extends ILFrame {
         setJMenuBar(myMenuBar);
         setVisible(true);
     }
-
 
     /**
      * This method is used to remvove current pane

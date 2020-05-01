@@ -207,17 +207,17 @@ public class Music {
          * in each iteration.
          */
         int pixCount = width;
-	/** 
+	      /** 
          * Holds increasing amounts of pixels
-	 * that are used to display more of the
-	 * image for each chord played.
-         */
+	       * that are used to display more of the
+	       * image for each chord played.
+         */  
         int[] row = new int[width * height];
         /** Current chord */
         Chord chord;
-        /** Current duration */
+        /**Current duration */
         int duration = STD_DURATION;
-        /** Tune iterator */
+        /**Tune iterator */
         Iterator<Chord> tuneIt = tune.iterator();
         int line = 0;
         while (tuneIt.hasNext()) {
