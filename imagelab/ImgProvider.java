@@ -18,7 +18,6 @@ import java.io.*;
 public class ImgProvider extends JComponent {
     /** Serialization version. */
     private static final long serialVersionUID = 11L;
-    static Thread playThread;
     static boolean  all;
     /** true if this ImgProvider currently holds an image; false otherwise. */
     boolean         isLoaded;
@@ -473,7 +472,7 @@ public class ImgProvider extends JComponent {
             }//for row
             int[] instruments = {Note.Vibes, Note.Pizzacatto, Note.MelodicTom};
             Music m = new Music(3, instruments);
-            m.playTune(tune);
+            m.playTune(tune, this);
         });
         playThread.start();
 
