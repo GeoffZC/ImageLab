@@ -26,7 +26,7 @@ public class ImgProvider extends JComponent {
     int             pixheight;
     /** Image width in pixels. */
     int             pixwidth;
-    /**Thread allows play() to run independently of display.*/
+    /** Thread allows play() to run independently of display. */
     static Thread playThread;
     /** The raw image. */
     Image           img;
@@ -47,7 +47,7 @@ public class ImgProvider extends JComponent {
     /** Identification used to distinguish one ImgProvider from another. */
     protected int id;
     protected ImageLab lab;
-    /**Used to pass instance between classes*/
+    /** Used to pass instance between classes. */
     private  DisplayImage dis;
     /** No-argument constructor.  Sets name to empty string. */
     public ImgProvider() {
@@ -199,7 +199,7 @@ public class ImgProvider extends JComponent {
         img = getToolkit().createImage(
                 new MemoryImageSource(pixwidth, pixheight, pix, 0, pixwidth));
         //System.out.println("ImgProvider:showPix:  before displayImage");
-        dis = new DisplayImage(this,name,true);
+        dis = new DisplayImage(this, name, true);
         //System.out.println("ImgProvider:showPix:  after displayImage");
         try { Thread.sleep(100);}catch(Exception e){}       //make sure image has time to display
     }//showPix
@@ -415,8 +415,6 @@ public class ImgProvider extends JComponent {
             int height = bw.length;
             int width = bw[0].length;
 
-            //System.out.println("Playing image number " + getid());
-
             Tune tune = new Tune();
             /* A 7-octave pentatonic scale. */
             Scale scale = new Scale();
@@ -505,7 +503,7 @@ public class ImgProvider extends JComponent {
         System.out.println("ImgProvider:showSlow: Second Pass");
     }
 
-    /**Used to remove current DisplayImage
+    /** Used to remove current DisplayImage
      *so that new one can be added.
      */
     public void removeContainer() {
@@ -513,25 +511,25 @@ public class ImgProvider extends JComponent {
     }
 
     /**
-     *@return pix pixel array.
+     * @return pix pixel array
      */
     public int[] getPix() {
         return pix;
     }
     /**
-     *@return the image  width in pixels.
+     * @return the image  width in pixels
      */
     public int getPixWidth() {
         return pixwidth;
     }
     /**
-     *@return the image height in pixels.
+     * @return the image height in pixels
      */
     public int getPixHeight() {
         return pixheight;
     }
     /**
-     *@return the DisplayImage object used for this instance.
+     * @return the DisplayImage object used for this instance
      */
     public DisplayImage getDis() {
         return dis;
