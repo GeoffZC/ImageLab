@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
 
-
-
 /**
  * Graphics frame used to display an image.
  * @author Dr. Aaron Gordon
@@ -97,17 +95,19 @@ public class DisplayImage extends ILFrame {
     }
 
 
-    /**This method is used to remvove current pane
-     *before synchronization occurs.
+    /**
+     * This method is used to remvove current pane
+     * before synchronization occurs.
      */
     public void remove() {
         getContentPane().remove(pane);
     }
 
-     /**Method to display image a line at a time while music is playing.
-      *@param w is the width of the image in pixels.
-      *@param h is the height of the image in pixels.
-      *@param pixs is the array of pixel values.
+     /**
+      * Method to display image a line at a time while music is playing.
+      * @param w is the width of the image in pixels.
+      * @param h is the height of the image in pixels.
+      * @param pixs is the array of pixel values.
       */
      public void synchronize(final int w, final int h, final int[] pixs) {
         img = getToolkit().createImage(
