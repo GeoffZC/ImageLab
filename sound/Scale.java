@@ -96,7 +96,7 @@ import java.util.Iterator;
             s.addPitch((Note.C + PERFECT_FIFTH) + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + MAJOR_SIXTH) + (OCTAVE_FACTOR * i));
         }
-        s.addPitch((Note.C + (OCTAVE_FACTOR * END_PITCH_INTERVAL)));
+        s.addPitch((Note.C + (OCTAVE_FACTOR * OCTAVE_END_OFFSET)));
         return s;
     }
 
@@ -113,7 +113,7 @@ import java.util.Iterator;
             s.addPitch((Note.C + PERFECT_FIFTH)  + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + MINOR_SEVENTH) + (OCTAVE_FACTOR * i));
         }
-        s.addPitch((Note.C + (OCTAVE_FACTOR * END_PITCH_INTERVAL)));
+        s.addPitch((Note.C + (OCTAVE_FACTOR * OCTAVE_END_OFFSET)));
         return s;
     }
 
@@ -130,7 +130,7 @@ import java.util.Iterator;
             s.addPitch((Note.C + PERFECT_FIFTH) + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + MAJOR_SIXTH) + (OCTAVE_FACTOR * i));
         }
-        s.addPitch((Note.C + (OCTAVE_FACTOR * END_PITCH_INTERVAL)));
+        s.addPitch((Note.C + (OCTAVE_FACTOR * OCTAVE_END_OFFSET)));
         return s;
     }
 
