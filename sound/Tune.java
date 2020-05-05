@@ -56,8 +56,9 @@ public class Tune {
         return this.tempo;
     }
 
-    /** A sample tune for testing.
-     *@return a tune with chords
+    /** 
+     * A sample tune for testing.
+     * @return a tune with chords
      */
     public static Tune sampleTune() {
         Tune t = new Tune();
