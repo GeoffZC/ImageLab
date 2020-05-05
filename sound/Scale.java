@@ -12,10 +12,10 @@ import java.util.Iterator;
  public class Scale {
     /** The pitches for this tune. */
     private List<Integer> scalePitches;
-    /** Start of pitchInterval. */
-    private static final int START_PITCH_INTERVAL = -3;
-    /** End of pitchInterval. */
-    private static final int END_PITCH_INTERVAL = 4;
+    /** Max offset to low frequency keys. */
+    private static final int OCTAVE_START_OFFSET = -3;
+    /** Max offset to high frequency keys. */
+    private static final int OCTAVE_END_OFFSET = 4;
     /** The factor to move between octaves. */
     private static final int  OCTAVE_FACTOR = 12;
     /** The number of semitones in a minor seventh interval. */
@@ -89,7 +89,7 @@ import java.util.Iterator;
      */
     public static Scale pentatonic1() {
         Scale s = new Scale();
-        for (int i = START_PITCH_INTERVAL; i < END_PITCH_INTERVAL; i++) {
+        for (int i = OCTAVE_START_OFFSET; i < OCTAVE_END_OFFSET; i++) {
             s.addPitch(Note.C + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + MAJOR_SECOND) + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + PERFECT_FOURTH) + (OCTAVE_FACTOR * i));
@@ -106,7 +106,7 @@ import java.util.Iterator;
      */
     public static Scale pentatonic2() {
         Scale s = new Scale();
-        for (int i = START_PITCH_INTERVAL; i < END_PITCH_INTERVAL; i++) {
+        for (int i = OCTAVE_START_OFFSET; i < OCTAVE_END_OFFSET; i++) {
             s.addPitch(Note.C + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + MINOR_THIRD)  + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + PERFECT_FOURTH)  + (OCTAVE_FACTOR * i));
@@ -117,12 +117,13 @@ import java.util.Iterator;
         return s;
     }
 
-    /** Yet another 7-octave Pentatonic scale.
+    /**
+     * Yet another 7-octave Pentatonic scale.
      * @return a pentatonic scale
      */
     public static Scale pentatonic3() {
         Scale s = new Scale();
-        for (int i = START_PITCH_INTERVAL; i < END_PITCH_INTERVAL; i++) {
+        for (int i = OCTAVE_START_OFFSET; i < OCTAVE_END_OFFSET; i++) {
             s.addPitch(Note.C + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + MAJOR_SECOND) + (OCTAVE_FACTOR * i));
             s.addPitch((Note.C + MAJOR_THIRD) + (OCTAVE_FACTOR * i));
