@@ -76,8 +76,8 @@ public class Note {
 
 
     /**
-     *Midi channel through which instrument will
-     *be received. */
+     * Midi channel through which instrument will
+     * be received. */
     private int channel;    // 0 to 15
     /** The pitch of the note. */
     private int pitch;      // 0 to 127; 60 = Middle C
